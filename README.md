@@ -26,3 +26,5 @@ smtp_server=smtp.gmail.com
 smtp_port=587
 mtp_ssl=auto
 hostname=localhost
+auth_username=baulinm2006@gmail.com
+auth_password=uedo kzmu syuv xoas
