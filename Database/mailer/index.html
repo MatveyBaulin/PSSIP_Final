@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отправка писем через PHP</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .feature {
+            margin-top: 15px;
+            color: #667eea;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 Отправка писем через PHP</h1>
+        
+        <div class="cards">
+            <a href="subscribe.php" class="card">
+                <div class="icon">📨</div>
+                <h2>Подписка на рассылку</h2>
+                <p>Подпишитесь на новости и получайте обновления на email</p>
+                <div class="feature">✓ Приветственное письмо<br>✓ Уведомление администратору<br>✓ Сохранение в БД</div>
+            </a>
+            
+            <a href="feedback.php" class="card">
+                <div class="icon">💬</div>
+                <h2>Обратная связь</h2>
+                <p>Отправьте сообщение администратору сайта</p>
+                <div class="feature">✓ Копия вам на почту<br>✓ Быстрый ответ<br>✓ Проверка на спам</div>
+            </a>
+            
+            <a href="questionnaire.php" class="card">
+                <div class="icon">📝</div>
+                <h2>Отправка анкеты</h2>
+                <p>Заполните анкету для участия в программе</p>
+                <div class="feature">✓ Подтверждение получения<br>✓ Сохранение данных<br>✓ Форматированный отчет</div>
+            </a>
+        </div>
+        
+        <p style="text-align: center; color: white; margin-top: 40px; opacity: 0.8;">
+            <small>Все формы работают через AJAX и имеют адаптивный дизайн</small>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опрос</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Важно для правильного расчета ширины */
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Уважаемый участник опроса!</h1>
+        <p>Пожалуйста, ответьте на несколько вопросов.</p>
+
+        <form action="process_survey.php" method="post">
+            <div class="question">
+                <label for="name">Ваше имя (необязательно):</label>
+                <input type="text" id="name" name="name">
+            </div>
+
+            <div class="question">
+                <label for="q1">1. Насколько вы удовлетворены нашим сервисом?</label>
+                <select id="q1" name="q1" required>
+                    <option value="">-- Выберите --</option>
+                    <option value="очень_удовлетворен">Очень удовлетворен</option>
+                    <option value="удовлетворен">Удовлетворен</option>
+                    <option value="нейтрально">Нейтрально</option>
+                    <option value="не_удовлетворен">Не удовлетворен</option>
+                    <option value="очень_не_удовлетворен">Очень не удовлетворен</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>2. Какие функции вы хотели бы видеть в будущем?</label><br>
+                <input type="checkbox" id="f1" name="features[]" value="новая_функция_1">
+                <label for="f1"> Новая функция 1</label><br>
+                <input type="checkbox" id="f2" name="features[]" value="новая_функция_2">
+                <label for="f2"> Новая функция 2</label><br>
+                <input type="checkbox" id="f3" name="features[]" value="новая_функция_3">
+                <label for="f3"> Новая функция 3</label><br>
+                <input type="checkbox" id="f4" name="features[]" value="другое">
+                <label for="f4"> Другое</label><br>
+            </div>
+
+            <div class="question">
+                <label for="comment">3. Ваши комментарии или предложения (необязательно):</label>
+                <textarea id="comment" name="comment" rows="4"></textarea>
+            </div>
+
+            <button type="submit">Отправить опрос</button>
+        </form>
+    </div>
+</body>
+</html>

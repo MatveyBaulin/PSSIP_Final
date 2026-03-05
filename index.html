@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Школа программирования</title>
+  <!--Подключаем файл CSS-->
+  <link href="./pages/CSS/YtYt.css" rel="stylesheet" />
+  <!--Подключаем шрифт-->
+  <style>
+    @font-face {
+      font-family: 'Gilroy';
+      src: url('./pages/fonts/Gilroy-Light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;}
+    #pointerArea {
+      width: 200px;
+      height: 200px;
+      background-color: lightcoral;
+      text-align: center;
+      line-height: 200px;
+      margin: 20px;
+      user-select: none; /* Запрещает выделение текста */
+    }
+     #scrollableArea {
+      width: 300px;
+      height: 200px;
+      border: 1px solid black;
+      overflow: auto; /* Важно: добавляет полосу прокрутки, когда контент выходит за пределы */
+      padding: 10px;
+      margin: 20px;
+    }
+     #content {
+      height: 500px; /* Делаем контент больше контейнера, чтобы появилась полоса прокрутки */
+      background-color: lightblue;
+    }
+
+    #log {
+      margin: 20px;
+    }
+    .error {
+      color: red;}
+    #drag-container {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #aaa;
+    margin: 20px;
+    text-align: center;
+    line-height: 200px;
+  }
+  #draggable {
+    width: 100px;
+    height: 50px;
+    background-color: lightblue;
+    text-align: center;
+    line-height: 50px;
+    cursor: grab;
+    margin: 0 auto;
+  }
+   #timer {
+    font-size: 24px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  </style>
+</head>
+
+<body>
+  <!--Создаём шапку сайта-->
+  <header>
+    <div class="header-container container">
+      <img class="logo" src="./pages/IMG/logo.svg" alt="Логотип" />
+      <p id="date"></p>
+      <!-- Меню-гамбургер -->
+      <button class="hamburger" aria-label="Меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <!-- Основное меню (скрыто на мобильных устройствах) -->
+      <nav class="nav-menu">
+        <a href="#learn">Чему вы научитесь</a>
+        <a href="#process">Процесс обучения</a>
+        <a href="#price">Стоимость</a>
+        <a href="#labs">Лабораторные работы</a>
+        <a href="registration.html" class="register-link">Регистрация</a>
+      </nav>
+      <button class="header-button">
+        <img src="./pages/IMG/Button1.svg" style="width: 100px;" alt="Вход" />
+      </button>
+    </div>
+  </header>
+
+  <main class="main-content container">
+    <!--Создаём первую секцию-->
+    <section class="hero">
+      <h1>
+        Школа <b class="highlight-brace">{</b><b><i>программирования</i></b><b class="highlight-brace">}</b> для тех,
+        кому нужны реальные навыки, а не просто сертификат
+      </h1>
+      <img class="hero-image" src="./pages/IMG/photo1.svg" alt="Фото" />
+    </section>
+
+    <section class="intro-test">
+      <hr class="divider" />
+      <p>Пройдите тестирование, чтобы получить доступ<br>к бесплатным вводным урокам</p>
+      <button class="test-button">
+        <img src="./pages/IMG/Button2.svg" alt="Пройти тест" />
+      </button>
+    </section>
+
+    <!--Создаём раздел с перечислением технологий-->
+    <h1 style="text-align: center;">Какие технологии вы изучите:</h1>
+
+    <section class="technologies-section">
+      <img src="./pages/IMG/photo2.png" alt="Tech photo">
+      <div class="slider" id="slider">
+        <div class="slider-container">
+          <div class="slide">
+            <img src="./pages/IMG/tech1.png" alt="Tech 1">
+          </div>
+          <div class="slide">
+            <img src="./pages/IMG/tech2.png" alt="Tech 2">
+          </div>
+          <div class="slide">
+            <img src="./pages/IMG/tech3.png" alt="Tech 3">
+          </div>
+          <div class="slide">
+            <img src="./pages/IMG/tech4.png" alt="Tech 4">
+          </div>
+          <div class="slide">
+            <img src="./pages/IMG/tech5.png" alt="Tech 5">
+          </div>
+          <div class="slide">
+            <img src="./pages/IMG/tech6.png" alt="Tech 6">
+          </div>
+          <div class="slide">
+            <img src="./pages/IMG/tech7.png" alt="Tech 7">
+          </div>
+        </div>
+      </div>
+      <p class="tech-description">
+        <b>Это необходимый минимум для современного backend-разработчика</b>
+      </p>
+    </section>
+
+    <!--Создаём раздел особенностей обучения с карточками-->
+<section class="advantages-section">
+      <h2>Обучение в YtYt - это удобно и результативно</h2>
+      <div class="cards-grid">
+    <article class="card"> 
+      <img src="./pages/IMG/icon1.png" alt="Иконка" />
+      <h3>Огромное<br>количество практики</h3>
+      <p>Более 500 самостоятельных заданий и 20 полноценных больших проектов</p>
+    </article>
+    <article class="card"> 
+      <img src="./pages/IMG/icon2.png" alt="Иконка" />
+      <h3>Современные<br>методики обучения</h3>
+      <p>Спиральное обучение: погружаемся в материал постепенно, виток за витком</p>
+    </article> 
+    <article class="card"> 
+      <img src="./pages/IMG/icon3.png" alt="Иконка" />
+      <h3>Простое и понятное изложение</h3>
+      <p>Вместо заумных терминов – примеры из реального мира</p>
+    </article> 
+    <article class="card"> 
+      <img src="./pages/IMG/icon4.png" alt="Иконка" />
+      <h3>Гибкий график<br>занятий</h3>
+      <p>Учитесь в любое время в удобном для вас темпе</p> 
+    </article> 
+    <article class="card"> 
+      <img src="./pages/IMG/icon5.png" alt="Иконка" /> 
+      <h3>Прямая связь с опытными программистами</h3> 
+      <p>Задавайте вопросы и отправляйте свой код на проверку</p> 
+    </article> 
+    <article class="card"> 
+      <img src="./pages/IMG/icon6.png" alt="Иконка" /> 
+      <h3>Оплата небольшими частями</h3> 
+      <p>Платите только за тот материал, который сейчас изучаете, а не за весь курс сразу</p> 
+    </article> 
+    <article class="card"> 
+      <img src="./pages/IMG/icon7.png" alt="Иконка" /> 
+      <h3>Быстрый и лёгкий возврат</h3> 
+      <p>Если передумаете учиться – вернем деньги за 3 рабочих дня</p> 
+    </article> 
+  </div> 
+</section>
+
+    <!--Создаём раздел с видео-->
+    <h1 style="text-align: center;">Как происходит обучение на YtYt?</h1>
+    <p style="text-align: center;">Обучение должно быть комфортным. Поэтому мы разработали собственную платформу для
+      обучения программированию. На ней вы можете не только изучать теорию, но и запускать готовые примеры и даже писать
+      свой собственный код.</p>
+    <section class="video-section">
+      <img src="./pages/IMG/video.png" alt="Видео">
+    </section>
+
+    <!--Создаём второй раздел с особенностями обучения с каруселью-->
+    <section class="advantages">
+      <div class="carousel" id="carousel">
+        <div class="advantage">
+          <p class="adv-num">01</p>
+          <p class="p-adv-name"><b>Весь материал разбит на небольшие уроки</b></p>
+          <p>Теория и практика подаются маленькими порциями. Так вам будет легче усваивать новые знания.</p>
+        </div>
+        <div class="advantage">
+          <p class="adv-num">02</p>
+          <p class="p-adv-name"><b>Обучение через практику</b></p>
+          <p>Всё, что вы узнали, вы тут же начинаете применять на практике. Вы сразу видите результаты своего труда.</p>
+        </div>
+        <div class="advantage">
+          <p class="adv-num">03</p>
+          <p class="p-adv-name"><b>Нет ограничений по времени</b></p>
+          <p>Можно совмещать учёбу с работой и другими делами. Не нужно выпрашивать академический отпуск, если пришлось
+            сделать перерыв.</p>
+        </div>
+      </div>
+      <button class="carousel-prev" aria-label="Предыдущий">‹</button>
+      <button class="carousel-next" aria-label="Следующий">›</button>
+    </section>
+
+    <!--Создаём мини-раздел с просьбой пройти обучение-->
+    <div class="call-to-action">
+      <img src="./pages/IMG/Button3.svg" alt="Кнопка">
+      <p>Попробуйте, первые уроки бесплатны, но нужно пройти тестирование</p>
+    </div>
+
+    <!--Создаём раздел поддержки-->
+    <section class="support-section">
+      <div class="support-item" style="width: auto;">
+        <img src="./pages/IMG/photo3.png">
+      </div>
+      <div class="support-item">
+        <h2>Помощь и поддержка</h2>
+        <p>Если в процессе обучения возникнут сложности, вы всегда сможете задать вопрос своему наставнику.</p>
+        <p>Раз в несколько уроков вы будете получать большое задание, которое нужно будет сдавать на проверку
+          код-ревьюеру. Он внимательно изучит ваш код, найдет ошибки и поможет вам стать лучше.</p>
+      </div>
+      <div class="support-item">
+        <h2>Методика обучения</h2>
+        <p>Весь учебный материал структурирован по принципу «спирального обучения». Сначала вы получаете базовые знания,
+          а затем на каждом витке спирали углубляетесь в изученные темы, доводя их понимание до совершенства. Такой
+          подход упрощает обучение и гарантирует, что вы не пропустите ничего важного.</p>
+      </div>
+      <div class="support-item" style="width: auto;">
+        <img src="./pages/IMG/photo4.png">
+      </div>
+    </section>
+
+    <!--Создаём раздел стоимости обучения-->
+    <h1 style="text-align: center;">Стоимость обучения</h1>
+    <section class="pricing-header">
+      <div class="pricing-item">
+        <img src="./pages/IMG/icon8.png" alt="" />
+        <p>Весь курс разбит на несколько блоков. Оплата поэтапная вы платите только за тот блок, который сейчас
+          проходите.</p>
+      </div>
+      <div class="pricing-item">
+        <img src="./pages/IMG/icon6.png" alt="" />
+        <p>Любой из блоков вы можете оплатить в рассрочку</p>
+      </div>
+      <div class="pricing-item">
+        <img src="./pages/IMG/icon7.png" alt="" />
+        <p>Если передумаете учиться, то возврат можно оформить в любой момент. Возвращаем деньги за 3 рабочих дня.</p>
+      </div>
+    </section>
+    <!--Создаём таблицу стоимостей обучения-->
+    <section id="pricing-table" class="pricing-table">
+    <div class="table-header">
+      <p>Блок</p>
+      <p>Стоимость (₽)</p>
+      <p>Расчетное время обучения (мес.) *</p>
+      <p>Действие</p>
+    </div>
+    <div id="table-body">
+      <!--  Строки таблицы будут добавлены сюда JS -->
+    </div>
+    <div class="total-row" id="total-row">
+      <!-- Итоговая строка будет добавлена сюда JS -->
+    </div>
+  </section>
+
+  <h2>Корзина:</h2>
+  <ul id="wishlist">
+    <!-- Элементы корзины будут добавлены сюда JS -->
+  </ul>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tableBody = document.getElementById('table-body');
+      const totalRow = document.getElementById('total-row');
+      const wishlistElement = document.getElementById('wishlist');
+
+      let data = [];
+      let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+
+      async function loadData() {
+        // Пример встроенных данных (без data.json файла)
+        data = [
+          { "name": "Введение в программирование", "price": 0, "duration": 0.5 },
+          { "name": "Основы программирования на Python", "price": 9900, "duration": 1 },
+          { "name": "Python, продвинутый уровень", "price": 14900, "duration": 2.5 },
+          { "name": "Сети + фреймворк Flask", "price": 14900, "duration": 2.5 },
+          { "name": "Базы данных", "price": 14900, "duration": 2 },
+          { "name": "Фреймворк Django", "price": 14900, "duration": 2 },
+          { "name": "Разработка \"боевого\" проекта", "price": 9900, "duration": 1.5 }
+        ];
+        renderTable();
+        renderWishlist();
+      }
+
+      // Функция для отображения таблицы на основе данных из JSON
+      function renderTable() {
+        tableBody.innerHTML = '';
+
+        let totalPrice = 0;
+        let totalDuration = 0;
+
+        data.forEach(item => {
+          const row = document.createElement('div');
+          row.style.display = 'grid';
+          row.style.gridTemplateColumns = 'repeat(4, 1fr)';
+          row.style.padding = '10px';
+          row.style.borderBottom = '1px solid #ddd';
+
+          row.innerHTML = `
+            <p>${item.name}</p>
+            <p>${item.price}</p>
+            <p>${item.duration}</p>
+          `;
+
+          const addButton = document.createElement('button');
+          addButton.textContent = 'Добавить';
+          addButton.style.backgroundColor = '#4CAF50';
+          addButton.style.color = 'white';
+          addButton.style.padding = '5px 10px';
+          addButton.style.border = 'none';
+          addButton.style.cursor = 'pointer';
+          addButton.addEventListener('click', () => addToWishlist(item));
+
+          row.appendChild(addButton);
+          tableBody.appendChild(row);
+
+          totalPrice += item.price;
+          totalDuration += item.duration;
+        });
+
+        totalRow.innerHTML = `
+          <p><b>Итого</b></p>
+          <p><b>${totalPrice}</b></p>
+          <p><b>${totalDuration}</b></p>
+        `;
+        totalRow.style.fontWeight = 'bold';
+        totalRow.style.textAlign = 'right';
+        totalRow.style.padding = '10px';
+
+      }
+
+      // Функция добавления в корзину
+      function addToWishlist(item) {
+        if (!wishlist.find(wishlistItem => wishlistItem.name === item.name)) {
+          wishlist.push(item);
+          localStorage.setItem('wishlist', JSON.stringify(wishlist));
+          renderWishlist();
+        }
+      }
+
+      // Функция отображения корзины
+      function renderWishlist() {
+        wishlistElement.innerHTML = '';
+
+        wishlist.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${item.name} (${item.price} ₽)`;
+          listItem.style.marginBottom = '5px';
+
+          const removeButton = document.createElement('button');
+          removeButton.textContent = 'Удалить';
+          removeButton.style.backgroundColor = '#f44336';
+          removeButton.style.color = 'white';
+          removeButton.style.padding = '5px 10px';
+          removeButton.style.border = 'none';
+          removeButton.style.cursor = 'pointer';
+          removeButton.addEventListener('click', () => removeFromWishlist(item));
+          listItem.appendChild(removeButton);
+
+          wishlistElement.appendChild(listItem);
+          wishlistElement.style.listStyleType = 'none';
+          wishlistElement.style.padding = '0';
+        });
+      }
+
+      // Функция удаления из корзины
+      function removeFromWishlist(item) {
+        wishlist = wishlist.filter(wishlistItem => wishlistItem.name !== item.name);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        renderWishlist();
+      }
+
+      loadData();
+    });
+  </script>
+
+    <p>* если занятиям уделяется около 20 часов в неделю</p>
+    <!--Создаём блок предупреждения-->
+    <div class="final-note">
+      <img src="./pages/IMG/icon9.png" alt="Иконка">
+      <p>Все блоки проходятся строго по порядку. Пропустить какой-то блок или начать обучение с середины нельзя, даже
+        если вы считаете, что уже знаете какую-то часть материала. Только так мы можем гарантировать, что вы получите
+        все знания, предусмотренные учебной программой.</p>
+    </div>
+    <img src="./pages/IMG/Button4.svg" style="width: 200px;" alt="Кнопка">
+  </main>
+  <h1 id="#labs">Баулин Матвей, ПЗТ-40</h1>
+    <h2>Лабораторные работы</h2>
+    <a href="./Проект/index.html">ЛР 1-4</a>
+    <a href="./ЛР 5/index.html">ЛР 5</a>
+    <a href="./ЛР 6/index.html">ЛР 6</a>
+    <a href="./ЛР 7/index.html">ЛР 7</a>
+    <a href="./ЛР 8/index.html">ЛР 8</a>
+    <a href="./ЛР 9/index.html">ЛР 9(Задание 1)</a>
+    <a href="./ЛР 9/index2.html">ЛР 9(Задание 2)</a>
+    <a href="./ЛР 9/index3.html">ЛР 9(Задание 3)</a>
+    <a href="./ЛР 10-12/Задание1.html">ЛР 10-12(Задание1)</a>
+    <a href="./ЛР 10-12/Задание2.html">ЛР 10-12(Задание2)</a>
+    <a href="./ЛР 10-12/Задание3.html">ЛР 10-12(Задание3)</a>
+    <a href="./ЛР 10-12/Задание4.html">ЛР 10-12(Задание4)</a>
+    <a href="./ЛР 10-12/Задание5.html">ЛР 10-12(Задание5)</a>
+    <a href="./ЛР 13-14/Задание_2.html">ЛР 13-14(Задание 1-2)</a>
+    <a href="./ЛР 13-14/Задание_3.html">ЛР 13-14(Задание 3)</a>
+    <a href="./ЛР 13-14/Задание_4.html">ЛР 13-14(Задание 4)</a>
+    <a href="./ЛР 13-14/Задание_5.html">ЛР 13-14(Задание 5)</a>
+    <a href="./ЛР 15/ЛР15з2.html">ЛР 15</a>
+    <a href="./ЛР 16/16.html">ЛР 16</a>
+<div>
+  <p>ЛР 17</p>
+  <!--Интерфейсные события-->
+  <!--Событие клавиатуры-->
+<p>Событие клавиатуры</p>
+<button id="button">Введите слово "RELOAD"</button>
+
+<script>
+  const button = document.getElementById('button');
+  let inputBuffer = '';
+
+  button.onclick = function(event) {
+    if (event.altKey && event.shiftKey) {
+      alert('Ура!');
+    }
+  };
+
+  document.addEventListener('keydown', function(event) {
+    inputBuffer += event.key;
+
+    if (inputBuffer.length > 6) {
+      inputBuffer = inputBuffer.slice(-6); // Оставляем последние 6 символов
+    }
+
+    if (inputBuffer.toUpperCase() === 'RELOAD') {
+      alert('Страница перезагружается...');
+      location.reload();
+    }
+  });
+</script>
+<p>События слайдера и колеса прокрутки указаны в следующих разделах:</p>
+<a href="#slider">Колесо прокрутки</a>
+<a href="#carousel">Слайдер</a>
+  </div>
+  <div>
+    <p>ЛР 18</p>
+    <p>Проверка валидации осуществлена на странице "Регистрация"</p>
+  </div>
+  <div>
+    <p>ЛР 19-20</p>
+    <p>Cookies и Local Storage взаимодействованы на странице "Регистрация". JSON взаимодействован в следующем разделе:</p>
+    <a href="#pricing-table">Стоимость обучения</a>
+    <p><b>! Примечание: в корзину можно добавить определённый товар единожды !</b></p>
+  </div>
+  <div>
+    <h1 style="text-align: center;">Работы с PHP</h1>
+    <h2>Задание 1: Регистрация</h2>
+    <a href="./pages/PHP/index1.php">Обработка запросов из форм с помощью PHP</a>
+    <h2>Задание 2: Авторизация</h2>
+    <a href="./pages/PHP/index2.php">Незащищённый вход</a>
+    <a href="./pages/PHP/Auth/index.php">Защищённый вход</a>
+    <h2>Задание 3: Считывание данных из файлов</h2>
+    <a href="./pages/PHP/survey/index.html">Опрос</a>
+    <h2>Задание 4: Отправка сообщений на email</h2>
+    <a href="./pages/PHP/Database/feedback/index.php">Отправка сообщения на email</a>
+    <h2>Задание 5: Отображение контента или новостей на странице</h2>
+    <a href="./pages/PHP/Database/Text_content/index.php">Текстовый контент</a>
+    <h2>Задание 6 + 7 + 8: Каталог продукции, работа с корзиной и оформление заказа</h2>
+    <a href="./pages/PHP/Database/catalog/index.php">Каталог продукции и корзина</a>
+    <h2>Задание 9: Использование при разработке проектирования ООП-программирования</h2>
+    
+
+  </div>
+  <!--Создаём подвал сайта-->
+  <footer class="footer container">
+    <div class="footer-top">
+      <img src="./pages/IMG/logo.svg" alt="Логотип" class="footer-logo" />
+      <p>Школа программирования</p>
+      <div class="footer-socials">
+        <a href="#"><img src="./pages/IMG/instagram.png" alt="Instagram" /></a>
+        <a href="#"><img src="./pages/IMG/vk.png" alt="VK" /></a>
+        <a href="#"><img src="./pages/IMG/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="./pages/IMG/youtube.png" alt="YouTube" /></a>
+      </div>
+      <nav class="footer-nav">
+        <a href="#learn">Чему вы научитесь</a>
+        <a href="#process">Процесс обучения</a>
+        <a href="#price">Стоимость</a>
+        <a href="#contacts">Контакты</a>
+        <a href="#register">Регистрация</a>
+      </nav>
+      <div class="footer-contacts">
+        <p>+7 (499) 348 93 96</p>
+        <p>info@tyt.ru</p>
+        <p>ИП Умаров Т. А.<br>ИНН 745216229809<br>ОГРНИП 315745200001358</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2022 ytyt — Все права защищены</p>
+      <p><a href="#">Пользовательское соглашение</a></p>
+      <p><a href="#">Политика конфиденциальности</a></p>
+    </div>
+  </footer>
+
+  <!--Подключаем скрипты сайта-->
+  <script src="./pages/JavaScript/alert.js"></script>
+  <script src="./pages/JavaScript/hamburger.js"></script>
+  <script src="./pages/JavaScript/date.js"></script>
+  <script src="./pages/JavaScript/navbutton.js"></script>
+  <script src="./pages/JavaScript/carousel.js"></script>
+  <script src="./pages/JavaScript/buttonshadow.js"></script>
+  <script src="./pages/JavaScript/logo.js"></script>
+  <script src="./pages/JavaScript/registration.js"></script>
+  <script src="./pages/JavaScript/slider.js"></script>
+  <script src="./pages/JavaScript/152.js"></script>
+  <script src="./pages/JavaScript/16.js"></script>
+</body>
+
+</html>
